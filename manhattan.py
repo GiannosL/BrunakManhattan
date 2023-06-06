@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+from source.beta_plot import beta_plot
 from source.manhattan_plot import man_plot
 from source.preprocessing import pre_processing
 
@@ -74,4 +75,33 @@ def miami(male_df, female_df,
     max_neglog = female_df['-log(p)'].max() if female_df['-log(p)'].max() > 9 else 9
     min_neglog = male_df['log(p)'].min() if male_df['log(p)'].min() < -9 else -9
     plt.ylim((min_neglog, max_neglog+2))
+    plt.show()
+
+
+def beta_beta(df_a, df_b, significance_thr=1e-8,
+              palette={'normal': '#A2ABB5', 
+                       'significant': '#6DD6DA'}):
+    """
+    doc
+    """
+    #
+    plt.subplots(figsize=(10, 10))
+
+    # pre-processing dataframes
+    df_a = pre_processing(df=df_a, log=False)
+    df_b = pre_processing(df=df_b, log=False)
+
+    # filtering
+    df_a_snps = df_a[df_a['p'] < significance_thr]['snp'].tolist()
+    df_b_snps = df_b[df_b['p'] < significance_thr]['snp'].tolist()
+    snps_of_interest = [*df_a_snps, *df_b_snps]
+
+    # plot
+    beta_plot(df_a=df_a, df_b=df_b, palette=palette,
+              snps_of_interest=snps_of_interest)
+    
+    plt.title('Beta-Beta plot', fontsize=20, weight='bold')
+    plt.xlabel('Effect size A', fontsize=16)
+    plt.ylabel('Effect size A', fontsize=16)
+
     plt.show()
