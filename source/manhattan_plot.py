@@ -6,7 +6,8 @@ def man_plot(df,
              y_column='',
              snp_list=[],
              horizontal_lines={'small':5, 'large':8},
-             palette={'chr-odd': '#102542', 'chr-even': '#F87060'},
+             palette={'chr-odd': '#102542', 'chr-even': '#F87060', 
+                      'special': '#230903', 'sp-edges': 'red'},
              plot_features={'size': 10}):
     """
     doc
@@ -36,7 +37,13 @@ def man_plot(df,
         
         # snps that need to be highlighted
         if snp_list:
-            pass
+            mini_df = chr_data[chr_data['snp'].isin(snp_list)]
+            mini_pos = mini_df['pos'] + previous_last_position
+            plot_ax.scatter(x=mini_pos,
+                            y=mini_df[y_column],
+                            s=plot_features['size'],
+                            c=palette['special'],
+                            edgecolors=palette['sp-edges'])
 
         # save ticks for each chromosome
         chr_ticks.append(f'chr-{chr_name}')
