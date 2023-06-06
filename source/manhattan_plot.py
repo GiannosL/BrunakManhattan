@@ -52,14 +52,14 @@ def man_plot(df,
     plot_ax.set_xticklabels(chr_ticks, rotation=60)
 
     # horizontal lines
-    horizontal_lines(a=horizontal_lines['small'], b=horizontal_lines['large'],
-                     a_color='blue', b_color='blue')
+    plot_horizontal_lines(a=horizontal_lines['small'], b=horizontal_lines['large'],
+                          a_color='blue', b_color='blue')
     
     # remove top, right spines
     plot_ax.spines[['top', 'right']].set_visible(False)
 
 
-def horizontal_lines(a, b, a_color, b_color):
+def plot_horizontal_lines(a, b, a_color, b_color):
     """
     doc
     """
