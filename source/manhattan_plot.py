@@ -7,7 +7,7 @@ def man_plot(df,
              snp_list=[],
              horizontal_lines={'small':5, 'large':8},
              palette={'chr-odd': '#102542', 'chr-even': '#F87060', 
-                      'special': '#230903', 'sp-edges': 'red'},
+                      'special': '#7CFC00', 'sp-edges': '#7CFC00'},
              plot_features={'size': 10}):
     """
     doc

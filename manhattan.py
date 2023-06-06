@@ -61,8 +61,8 @@ def miami(male_df, female_df,
              snp_list=snp_list,
              palette={'chr-odd': light_palette[0],
                       'chr-even': light_palette[1],
-                      'special': '#230903', 
-                      'sp-edges': 'red'},
+                      'special': '#7CFC00', 
+                      'sp-edges': '#7CFC00'},
             horizontal_lines={'small': -5, 'large': -8})
     
     # titles, labels
