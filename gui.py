@@ -37,10 +37,14 @@ with st.form('plot_form'):
     st.write('---')
 
     submission_btn = st.form_submit_button('Plot')
-    if submission_btn:
-        if plot_selection == 'Manhattan plot':
-            manhattan_view_model(snp_option=snp_list_option,
-                                 snp_file=snp_list_file,
-                                 gwas_file=gwas_file_1)
-        elif plot_selection == 'Miami plot':
-            pass
+
+# actions if submission button is pressed
+if submission_btn:
+    if plot_selection == 'Manhattan plot':
+        man_fig = manhattan_view_model(snp_option=snp_list_option,
+                                        snp_file=snp_list_file,
+                                        gwas_file=gwas_file_1)
+        
+        st.pyplot(man_fig)
+    elif plot_selection == 'Miami plot':
+        pass

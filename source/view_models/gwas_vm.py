@@ -39,6 +39,9 @@ def manhattan_view_model(snp_option, snp_file, gwas_file):
     gwas_data = parse_gwas_file(gwas_filename=gwas_file)
 
     # create manhattan plot
-    manhattan(df=gwas_data,
-              plot_title='Manhattan plot')
+    manhattan_figure = manhattan(df=gwas_data,
+                                 plot_title='Manhattan plot',
+                                 gui=True)
+    
+    return manhattan_figure
     
