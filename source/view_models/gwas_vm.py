@@ -19,9 +19,7 @@ def parse_gwas_file(gwas_filename):
     doc
     """
     # read file into dataframe
-    print(gwas_filename)
     df = pd.read_csv(gwas_filename, sep='\t')
-    print(df)
 
     return df
 
