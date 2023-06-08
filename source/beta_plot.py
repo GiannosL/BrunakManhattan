@@ -15,7 +15,7 @@ def beta_plot(df_a, df_b, snps_of_interest, palette):
     points = np.linspace(-2, 2, 1000)
 
     # plotting
-    plt.scatter(df_a['beta'], df_b['beta'], c=palette['normal'], edgecolors='black')
+    plt.scatter(df_a['beta'], df_b['beta'], c=palette['normal'])
     plt.plot(points, points, c='#817F82')
 
     plt.ylim((-x_lim, x_lim))
