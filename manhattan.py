@@ -5,7 +5,7 @@ from source.manhattan_plot import man_plot
 from source.preprocessing import pre_processing
 
 
-def manhattan(df, snp_list=[], plot_title='Manhattan plot'):
+def manhattan(df, snp_list=[], plot_title='Manhattan plot', gui=False):
     """
     doc
     """
@@ -29,11 +29,14 @@ def manhattan(df, snp_list=[], plot_title='Manhattan plot'):
     #
     max_neglog = df['-log(p)'].max() if df['-log(p)'].max() > 9 else 9
     plt.ylim((0, max_neglog+2))
+    if gui:
+        return fig
     plt.show()
 
 
 def miami(male_df, female_df, 
-          plot_title='Miami plot', snp_list=[]):
+          plot_title='Miami plot', snp_list=[],
+          gui=False):
     """
     doc
     """
@@ -75,6 +78,8 @@ def miami(male_df, female_df,
     max_neglog = female_df['-log(p)'].max() if female_df['-log(p)'].max() > 9 else 9
     min_neglog = male_df['log(p)'].min() if male_df['log(p)'].min() < -9 else -9
     plt.ylim((min_neglog, max_neglog+2))
+    if gui:
+        return fig
     plt.show()
 
 
