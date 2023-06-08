@@ -29,8 +29,8 @@ with st.form('plot_form'):
     snp_list_option = col1.checkbox('Highlight SNPs')
 
     # GWAS files
-    gwas_file_1 = col2.file_uploader('GWAS file 1')
-    gwas_file_2 = col2.file_uploader('GWAS file 2 [optional]')
+    gwas_file_1 = col2.file_uploader('GWAS file 1 [mandatory]', type='tsv')
+    gwas_file_2 = col2.file_uploader('GWAS file 2 [optional]', type='tsv')
 
     # horizontal line
     st.write('\n')

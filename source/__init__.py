@@ -6,6 +6,7 @@ REGENIE_COLUMN_MAP = {
     'SNP': 'snp',
     'CHR': 'chr',
     'BP': 'pos',
+    'P': 'p',
     'BETA': 'beta',
     'SE': 'se'
 }
