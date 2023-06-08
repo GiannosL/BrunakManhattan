@@ -1,7 +1,7 @@
 import streamlit as st
 
 from source import APP_NAME, PLOTTING_OPTIONS
-from source.view_models.gwas_vm import manhattan_view_model
+from source.view_models.gwas_vm import manhattan_view_model, miami_view_model
 
 
 # set-up page layout
@@ -47,4 +47,9 @@ if submission_btn:
         
         st.pyplot(man_fig)
     elif plot_selection == 'Miami plot':
-        pass
+        mia_fig = miami_view_model(snp_option=snp_list_option,
+                                   snp_file=snp_list_file,
+                                   gwas_1_file=gwas_file_1,
+                                   gwas_2_file=gwas_file_2)
+        
+        st.pyplot(mia_fig)
