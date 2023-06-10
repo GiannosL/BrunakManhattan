@@ -2,13 +2,12 @@ import matplotlib.pyplot as plt
 
 
 def man_plot(df,
-             plot_ax='',
-             y_column='',
-             snp_list=[],
-             horizontal_lines={'small':5, 'large':8},
-             palette={'chr-odd': '#102542', 'chr-even': '#F87060', 
-                      'special': '#7CFC00', 'sp-edges': '#7CFC00'},
-             plot_features={'size': 10}):
+             plot_ax,
+             y_column,
+             snp_list,
+             horizontal_lines,
+             palette,
+             plot_features):
     """
     doc
     """
@@ -59,8 +58,10 @@ def man_plot(df,
     plot_ax.set_xticklabels(chr_ticks, rotation=60)
 
     # horizontal lines
-    plot_horizontal_lines(a=horizontal_lines['small'], b=horizontal_lines['large'],
-                          a_color='blue', b_color='blue')
+    plot_horizontal_lines(a=horizontal_lines['small'], 
+                          b=horizontal_lines['large'],
+                          a_color=horizontal_lines['small-color'], 
+                          b_color=horizontal_lines['large-color'])
     
     # remove top, right spines
     plot_ax.spines[['top', 'right']].set_visible(False)

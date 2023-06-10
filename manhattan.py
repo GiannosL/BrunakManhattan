@@ -1,11 +1,15 @@
 import matplotlib.pyplot as plt
 
+from source import PlottingOptions
 from source.beta_plot import beta_plot
 from source.manhattan_plot import man_plot
 from source.preprocessing import pre_processing
 
 
-def manhattan(df, snp_list=[], plot_title='Manhattan plot', gui=False):
+def manhattan(df, snp_list=[], 
+              plot_title='Manhattan plot', 
+              gui=False,
+              options_obj: PlottingOptions = PlottingOptions):
     """
     doc
     """
@@ -19,7 +23,22 @@ def manhattan(df, snp_list=[], plot_title='Manhattan plot', gui=False):
     man_plot(df=df,
              plot_ax=ax,
              y_column='-log(p)',
-             snp_list=snp_list)
+             snp_list=snp_list,
+             palette={
+                 'chr-odd': options_obj.odd_chromosome_color, 
+                 'chr-even': options_obj.even_chromosome_color,
+                 'special': options_obj.special_snps, 
+                 'sp-edges': options_obj.special_snp_edges
+             },
+             plot_features={
+                 'size': options_obj.marker_size
+             },
+             horizontal_lines={
+                 'small': options_obj.lower_limit_hl,
+                 'large': options_obj.upper_limit_hl,
+                 'small-color': options_obj.lower_limit_color,
+                 'large-color': options_obj.upper_limit_color
+             })
     
     # titles, labels
     plt.title(plot_title, fontsize=20, weight='bold')
@@ -35,8 +54,10 @@ def manhattan(df, snp_list=[], plot_title='Manhattan plot', gui=False):
 
 
 def miami(male_df, female_df, 
-          plot_title='Miami plot', snp_list=[],
-          gui=False):
+          plot_title='Miami plot', 
+          snp_list=[],
+          gui=False,
+          options_obj: PlottingOptions = PlottingOptions):
     """
     doc
     """
@@ -57,17 +78,38 @@ def miami(male_df, female_df,
     man_plot(df=female_df,
              plot_ax=ax,
              y_column='-log(p)',
-             snp_list=snp_list)
+             snp_list=snp_list,
+             palette={
+                 'chr-odd': options_obj.odd_chromosome_color, 
+                 'chr-even': options_obj.even_chromosome_color,
+                 'special': options_obj.special_snps, 
+                 'sp-edges': options_obj.special_snp_edges
+             },
+             plot_features={
+                 'size': options_obj.marker_size
+             },
+             horizontal_lines={
+                 'small': options_obj.lower_limit_hl,
+                 'large': options_obj.upper_limit_hl,
+                 'small-color': options_obj.lower_limit_color,
+                 'large-color': options_obj.upper_limit_color
+             })
     
     man_plot(df=male_df,
              plot_ax=ax,
              y_column='log(p)',
              snp_list=snp_list,
-             palette={'chr-odd': light_palette[0],
-                      'chr-even': light_palette[1],
-                      'special': '#7CFC00', 
-                      'sp-edges': '#7CFC00'},
-            horizontal_lines={'small': -5, 'large': -8})
+             palette={'chr-odd': options_obj.odd_chromosome_color2,
+                      'chr-even': options_obj.even_chromosome_color2,
+                      'special': options_obj.special_snps, 
+                      'sp-edges': options_obj.special_snp_edges},
+            horizontal_lines={'small': -options_obj.lower_limit_hl, 
+                              'large': -options_obj.upper_limit_hl,
+                              'small-color': options_obj.lower_limit_color,
+                              'large-color': options_obj.upper_limit_color},
+            plot_features={
+                 'size': options_obj.marker_size}
+            )
     
     # titles, labels
     plt.title(plot_title, fontsize=20, weight='bold')
