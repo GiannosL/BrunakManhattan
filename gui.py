@@ -24,14 +24,14 @@ with st.form('plot_form'):
         index=0
         )
     
-    save_box = col3.checkbox('Save plot')
+    save_box = col3.checkbox('**Save plot**')
     
     # SNP list
     snp_list_file = col1.file_uploader('SNP list [optional]')
     snp_list_option = col1.checkbox('Highlight SNPs')
 
     # GWAS files
-    gwas_file_1 = col2.file_uploader('GWAS file 1 [mandatory]', type='tsv')
+    gwas_file_1 = col2.file_uploader('>**GWAS file 1 [mandatory]**', type='tsv')
     gwas_file_2 = col2.file_uploader('GWAS file 2 [optional]', type='tsv')
 
     # horizontal line
