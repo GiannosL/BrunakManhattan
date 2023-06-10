@@ -1,4 +1,5 @@
+altair==4
 numpy==1.23.5
-pandas==1.4.2
+pandas==2.0.2
 matplotlib==3.7.0
 streamlit==1.19.0
