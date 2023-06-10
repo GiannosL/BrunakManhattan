@@ -24,6 +24,8 @@ with st.form('plot_form'):
         index=0
         )
     
+    save_box = col3.checkbox('Save plot')
+    
     # SNP list
     snp_list_file = col1.file_uploader('SNP list [optional]')
     snp_list_option = col1.checkbox('Highlight SNPs')
@@ -43,13 +45,15 @@ if submission_btn:
     if plot_selection == 'Manhattan plot':
         man_fig = manhattan_view_model(snp_option=snp_list_option,
                                         snp_file=snp_list_file,
-                                        gwas_file=gwas_file_1)
+                                        gwas_file=gwas_file_1,
+                                        save_flag=save_box)
         
         st.pyplot(man_fig)
     elif plot_selection == 'Miami plot':
         mia_fig = miami_view_model(snp_option=snp_list_option,
                                    snp_file=snp_list_file,
                                    gwas_1_file=gwas_file_1,
-                                   gwas_2_file=gwas_file_2)
+                                   gwas_2_file=gwas_file_2,
+                                   save_flag=save_box)
         
         st.pyplot(mia_fig)

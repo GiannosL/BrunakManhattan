@@ -3,6 +3,10 @@ import pandas as pd
 from manhattan import manhattan, miami
 
 
+# save path for plots
+PLOT_DIR: str = 'user-plots'
+
+
 def parse_snp_file(snp_filename):
     """
     pass
@@ -24,7 +28,8 @@ def parse_gwas_file(gwas_filename):
     return df
 
 
-def manhattan_view_model(snp_option, snp_file, gwas_file):
+def manhattan_view_model(snp_option, snp_file, 
+                         gwas_file, save_flag=False):
     """
     doc
     """
@@ -42,11 +47,16 @@ def manhattan_view_model(snp_option, snp_file, gwas_file):
                                  snp_list=snp_list,
                                  gui=True)
     
+    if save_flag:
+        plot_name = f'{PLOT_DIR}/manhattan-test.png'
+        manhattan_figure.savefig(plot_name, dpi=800)
+    
     return manhattan_figure
     
 
 def miami_view_model(snp_option, snp_file,
-                      gwas_1_file, gwas_2_file):
+                      gwas_1_file, gwas_2_file,
+                      save_flag=False):
     """
     doc
     """
@@ -65,5 +75,9 @@ def miami_view_model(snp_option, snp_file,
                          plot_title='Miami plot',
                          snp_list=snp_list,
                          gui=True)
+    
+    if save_flag:
+        plot_name = f'{PLOT_DIR}/miami-test.png'
+        miami_figure.savefig(plot_name, dpi=800)
     
     return miami_figure
