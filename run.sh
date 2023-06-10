@@ -1,1 +1,0 @@
-streamlit run gui.py --browser.gatherUsageStats=False --server.maxUploadSize 2000
