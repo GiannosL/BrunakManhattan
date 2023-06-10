@@ -24,3 +24,7 @@ class PlottingOptions:
         upper_limit_hl: int = 8
         lower_limit_color: str = '#000000'
         upper_limit_color: str = '#000000'
+
+        # for miami's lower gwas manhattan
+        odd_chromosome_color2: str = '#BDD2EF'
+        even_chromosome_color2: str = '#FDCAC4'
